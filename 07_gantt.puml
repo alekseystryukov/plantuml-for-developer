@@ -1,0 +1,16 @@
+@startgantt
+saturday are closed
+sunday are closed
+2025-03-10 is closed
+Project starts 2025-02-28
+
+[Prototype design] requires 10 days
+[Code prototype] requires 10 days
+[Write tests] requires 5 days
+[Code prototype] starts at [Prototype design]'s end
+[Write tests] starts at [Code prototype]'s start
+
+[Code prototype testing] requires 10 days
+[Code prototype testing] starts at [Code prototype]'s end
+[Code prototype testing] starts at [Write tests]'s end
+@endgantt

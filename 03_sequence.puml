@@ -1,0 +1,15 @@
+@startuml
+
+Client --> API: PATCH /order_id/1
+API --> DB: gets Order(id=1)
+API --> API: changes to order applied
+API --> DB: puts Order(id=1)
+Client <-- API: 200 OK
+
+Manager --> API: PUT /order_id/1/delivery
+API --> DB: gets Order(id=1)
+API --> API: set to "sent" status
+API --> DB: puts Order(id=1)
+Manager <-- API: 200 OK
+
+@enduml

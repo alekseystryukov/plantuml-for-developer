@@ -1,0 +1,29 @@
+@startuml
+
+cloud "Amazon Virtual Cloud" as VPC {
+    component "Load Balancer" as LB
+    component "Web Server" as WS
+    LB --> WS
+
+    database Database
+    WS --> Database
+
+    queue AsyncQueue
+    WS --> AsyncQueue: write
+
+    collections Workers
+    Workers -up-> AsyncQueue: read
+    Workers -right-> Database
+
+    storage StaticFiles
+}
+
+actor User
+User --> LB
+User --> StaticFiles
+
+node ExternalService
+WS --> ExternalService
+User --> ExternalService
+
+@enduml

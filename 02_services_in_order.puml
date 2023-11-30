@@ -1,0 +1,26 @@
+@startuml
+
+actor User
+component "Partner Interface" as PartnerInterface
+User --> PartnerInterface
+
+
+cloud Cloud {
+    component ViaConnect
+    component IntegrationEngine
+    ViaConnect --> IntegrationEngine
+
+    component CommercialEngine
+    component LoyaltyEngine
+    component RiskEngine
+
+    IntegrationEngine --> CommercialEngine
+    IntegrationEngine --> LoyaltyEngine
+    IntegrationEngine --> RiskEngine
+}
+
+
+PartnerInterface --> ViaConnect
+
+
+@enduml

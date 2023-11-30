@@ -1,0 +1,28 @@
+@startuml
+
+abstract OrderedViaPartner {
+    def get_current_orders(cls): ...
+
+    def order(self): ...
+    def get_order_status(self): ...
+}
+
+
+class BasePaperClass  implements  OrderedViaPartner
+
+class FaxPaper   extends  BasePaperClass
+class ToiletPaper   extends  BasePaperClass
+
+
+class Card implements  OrderedViaPartner
+
+class CreditCard
+Card <|-- CreditCard
+
+class Package
+Package  .up.|>  OrderedViaPartner
+Package  *--  CreditCard
+Package  *--  FaxPaper
+
+
+@enduml

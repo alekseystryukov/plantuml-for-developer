@@ -1,0 +1,28 @@
+@startuml
+
+:User goes to SignUp page;
+:User sends email;
+
+if (already exists) then (yes)
+
+    :show "user with this email exists";
+
+    if (do you want to sign in?) then (yes)
+        :redirect to sign in;
+        stop
+    else (no)
+        stop
+    endif
+
+else (no)
+    :send confirmation email;
+    if (User followed the link ?) then (yes)
+        :"Create password" form;
+        :Account and Session are created;
+        stop
+    else (no)
+        stop
+    endif
+endif
+
+@enduml
