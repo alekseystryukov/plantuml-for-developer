@@ -1,0 +1,55 @@
+@startuml
+' hide the spot
+hide circle
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+allow_mixing
+
+component "MarketAPI" as WS {
+    entity MarketUser {
+        id primary
+    }
+    entity Order {
+        id primary
+        created date
+        amount decimal
+    }
+    MarketUser ||--o{  Order
+
+    entity OrderItems {
+        id primary
+        price decimal
+        quantity int
+        ---
+        фіксує ціну та кількість
+    }
+    OrderItems }|--|| Order
+
+
+    entity Product {
+        id primary
+        name str
+        price decimal
+    }
+    Product ||--o{ OrderItems
+
+}
+
+component "User Service" as US {
+    entity User {
+        id primary
+        email unique
+        first_name
+        last_name
+    }
+    entity Device {
+        id primary
+        type str
+    }
+    Device }|-u-|| User
+}
+MarketUser |o--|| User
+
+
+@enduml
