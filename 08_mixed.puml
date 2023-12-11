@@ -7,7 +7,7 @@ skinparam linetype ortho
 allow_mixing
 
 component "MarketAPI" as WS {
-    entity MarketUser {
+    entity "User" as MarketUser {
         id primary
     }
     entity Order {
